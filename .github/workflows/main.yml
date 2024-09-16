@@ -28,4 +28,4 @@ jobs:
         run: |
           mvn clean install -Dselenium.version=${{ matrix.selenium }}
       - name: Run Selenium Tests
-        run: mvn test -Dtest.browser=chrome
+        run: mvn clean test
