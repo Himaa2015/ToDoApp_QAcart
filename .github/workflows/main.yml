@@ -19,13 +19,12 @@ jobs:
         with:
           java-version: ${{ matrix.java }}
           cache: maven
-          distribution: temurin
+          distribution: ["temurin"]
       - name: Set up Chrome
         uses: browser-actions/setup-chrome@latest
         with:
           chrome-version: latest
       - name: Install Selenium Dependencies
-        run: |
-          mvn clean install -Dselenium.version=${{ matrix.selenium }}
+        
       - name: Run Selenium Tests
         run: mvn clean test
