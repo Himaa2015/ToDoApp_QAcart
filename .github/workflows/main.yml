@@ -35,3 +35,7 @@ jobs:
 
       - name: Run tests with Maven
         run: mvn test
+
+      - name: Show Results With Allure
+        run: allure serve allure-results
+
