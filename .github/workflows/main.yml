@@ -36,6 +36,14 @@ jobs:
       - name: Run tests with Maven
         run: mvn test
 
-      - name: Show Results With Allure
-        run: allure serve allure-results
+          # Step 5: Install Allure
+      - name: Install Allure
+        run: |
+                 sudo apt-add-repository ppa:qameta/allure -y
+                 sudo apt-get update
+                 sudo apt-get install allure -y
+
+          # Step 6: Generate Allure Report
+      - name: Generate Allure Report
+        run: mvn allure:report
 
