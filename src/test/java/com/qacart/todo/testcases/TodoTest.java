@@ -43,7 +43,7 @@ public class TodoTest extends BaseTest {
     @Story("Delete T0d0")
     @Description("it will delete todo")
     @Test (description = "Should to delete todo")
-    public void ShouldBeAbleToDeleteTodo(){
+    public void ShouldBeAbleToDeleteTodo() throws InterruptedException {
 
         RegisterApi registerApi = new RegisterApi();
         registerApi.register();
@@ -60,5 +60,6 @@ public class TodoTest extends BaseTest {
                 .clickOnDelete()
                 .isNoTodoDisplayed();
         Assert.assertTrue(noTodo);
+        Thread.sleep(2000);
     }
 }
