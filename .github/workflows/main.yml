@@ -33,17 +33,15 @@ jobs:
       - name: Build with Maven
         run: mvn clean install
 
+      # Step 7: Install Allure on macOS
+      - name: Install Allure
+        run: |
+          brew install allure
+          
       - name: Run tests with Maven
         run: mvn test
 
-          # Step 5: Install Allure
-      - name: Install Allure
-        run: |
-                 sudo apt-add-repository ppa:qameta/allure -y
-                 sudo apt-get update
-                 sudo apt-get install allure -y
 
-          # Step 6: Generate Allure Report
+      # Step 8: Generate Allure Report
       - name: Generate Allure Report
         run: mvn allure:report
-
