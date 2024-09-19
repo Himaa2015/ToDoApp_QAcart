@@ -22,8 +22,11 @@ jobs:
           java-version: '22' # Replace with your JDK version
           distribution: 'temurin'
 
-      - name: Install Chrome
-        run: choco install googlechrome
+      - name: Download and Install Chrome
+        run: |
+          Invoke-WebRequest -Uri "https://dl.google.com/chrome/install/latest/googlechromestandaloneenterprise64.msi" -OutFile "chrome_installer.msi"
+          Start-Process "msiexec.exe" -ArgumentList '/i chrome_installer.msi /quiet /norestart' -Wait
+      
 
       - name: Install ChromeDriver
         run: choco install chromedriver
@@ -36,4 +39,3 @@ jobs:
 
 
 
-  
