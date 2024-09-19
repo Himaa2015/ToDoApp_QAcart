@@ -19,7 +19,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          java-version: '17' # Replace with your JDK version
+          java-version: '22' # Replace with your JDK version
           distribution: 'temurin'
 
       - name: Install Chrome
@@ -36,8 +36,4 @@ jobs:
 
 
 
-      # (Optional) Step for generating Allure reports:
-      - name: Generate Allure Report
-        run: |
-          mvn allure:report
-          allure serve
+  
