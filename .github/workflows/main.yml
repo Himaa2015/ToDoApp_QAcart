@@ -1,4 +1,4 @@
-name: Java CI with Maven on macOS
+name: Java CI with Maven on Windows
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout code
@@ -21,18 +21,23 @@ jobs:
         with:
           java-version: '17' # Replace with your JDK version
           distribution: 'temurin'
+
       - name: Install Chrome
-        run: |
-          brew install --cask google-chrome
+        run: choco install googlechrome
+
       - name: Install ChromeDriver
-        run: |
-          brew install chromedriver
-      # Step 7: Install Allure on macOS
+        run: choco install chromedriver
+
       - name: Install Allure
-        run: |
-          brew install allure
+        run: choco install allure
+
       - name: Build with Maven
-        run: mvn clean install
-      - name: Run tests with Maven
-        run: mvn test
-  
+        run: mvn clean install test
+
+
+
+      # (Optional) Step for generating Allure reports:
+      - name: Generate Allure Report
+        run: |
+          mvn allure:report
+          allure serve

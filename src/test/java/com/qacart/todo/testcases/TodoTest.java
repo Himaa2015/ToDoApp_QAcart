@@ -31,9 +31,6 @@ public class TodoTest extends BaseTest {
 
              injectCookiesToBrowser(registerApi.getCookies());
 
-             newTodoPage.load();
-
-
             String newTask = newTodoPage.load()
                        .addNewTask("Learn")
                        .getTodoText();
